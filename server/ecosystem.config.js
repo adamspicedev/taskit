@@ -2,10 +2,10 @@ module.exports = {
   apps: [
     {
       name: 'taskit',
-      script: 'bun',
-      args: 'run dev',
+      script: 'nom',
+      args: 'run start:prod',
       env: {
-        MODE_ENV: 'development',
+        MODE_ENV: 'production',
       },
     },
   ],
