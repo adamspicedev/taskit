@@ -15,7 +15,7 @@ type Props = {
 const ProjectByIdPage = ({ params }: Props) => {
   const { id } = params;
   const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.Board);
-  const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState<boolean>(false);
+  const [_, setIsNewTaskModalOpen] = useState<boolean>(false);
 
   return (
     <div>

@@ -1,19 +1,16 @@
 import { useAppDispatch, useAppSelector } from "@/app/redux";
-
-import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
+import { setIsSidebarCollapsed } from "@/state";
 import { motion } from "framer-motion";
-import { Menu, MoonIcon, Search, Settings, SunIcon } from "lucide-react";
-import Link from "next/link";
+import { Menu, Search } from "lucide-react";
 import Logo from "../Logo";
-import ThemeToggle from "../ThemeToggle";
 import SettingButton from "../SettingsButton";
+import ThemeToggle from "../ThemeToggle";
 
 const NavBar = () => {
   const dispatch = useAppDispatch();
   const isSideBarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
-  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">

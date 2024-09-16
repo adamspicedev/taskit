@@ -10,7 +10,7 @@ const PriorityPage = ({ params }: Props) => {
     const normalizedValue = value.toLowerCase();
     const entries = Object.entries(Priority);
 
-    for (const [key, enumValue] of entries) {
+    for (const [_, enumValue] of entries) {
       if (enumValue.toLowerCase() === normalizedValue) {
         return enumValue as Priority;
       }

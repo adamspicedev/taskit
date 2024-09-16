@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import Header from "../Header";
+import NewProjectModal from "../NewProjectModal";
 
 type Props = {
   activeTab: ActiveTab;
@@ -25,6 +26,10 @@ const ProjectHeader = ({ activeTab, setActiveTab, id }: Props) => {
   return (
     <div className="px-4 xl:px-6">
       {/* NEW PROJECT MODAL */}
+      <NewProjectModal
+        isOpen={isNewProjectModalOpen}
+        onClose={() => setIsNewProjectModalOpen(false)}
+      />
       <div className="py-6 lg:pb-4 lg:pt-8">
         <Header
           name={data?.name || "Project"}

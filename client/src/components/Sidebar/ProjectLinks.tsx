@@ -6,9 +6,7 @@ import React, { useState } from "react";
 import SidebarLink from "./SidebarLink";
 import clsx from "clsx";
 
-type Props = {};
-
-const ProjectLinks = (props: Props) => {
+const ProjectLinks = () => {
   const [showProjects, setShowProjects] = useState<boolean>(true);
 
   const { data: projects } = useGetProjectsQuery();

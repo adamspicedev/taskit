@@ -2,35 +2,30 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import Logo from "@/components/Logo";
-import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
+import { setIsSidebarCollapsed } from "@/state";
+import { clsx } from "clsx";
 import {
   Briefcase,
   Home,
-  Link,
   LockIcon,
-  MoonIcon,
   Search,
   Settings,
-  SunIcon,
   User,
   Users,
   XIcon,
 } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import SettingButton from "../SettingsButton";
+import ThemeToggle from "../ThemeToggle";
 import PriorityLinks from "./PriorityLinks";
 import ProjectLinks from "./ProjectLinks";
 import SidebarLink from "./SidebarLink";
-import { clsx } from "clsx";
-import ThemeToggle from "../ThemeToggle";
-import SettingButton from "../SettingsButton";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
   const isSideBarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
-  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   return (
     <div

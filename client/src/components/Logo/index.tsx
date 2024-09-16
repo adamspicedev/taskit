@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { CheckCheckIcon } from "lucide-react";
 
 const Logo = ({ className }: { className?: string }) => {
