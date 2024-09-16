@@ -100,7 +100,7 @@ export const api = createApi({
           if (!session) throw new Error("No session found");
           const { userSub } = session;
 
-          const userDetailsResponse = await fetchWithBQ(`users/${userSub}`);
+          const userDetailsResponse = await fetchWithBQ(`user/${userSub}`);
           const userDetails = userDetailsResponse.data as User;
 
           return { data: { user, userSub, userDetails } };
@@ -114,7 +114,7 @@ export const api = createApi({
       providesTags: ["Projects"],
     }),
     getProjectById: builder.query<Project, number>({
-      query: (projectId) => `projects/${projectId}`,
+      query: (projectId) => `project/${projectId}`,
     }),
     createProject: builder.mutation<Project, Partial<Project>>({
       query: (project) => ({
@@ -125,7 +125,7 @@ export const api = createApi({
       invalidatesTags: ["Projects"],
     }),
     getTasks: builder.query<Task[], { projectId: number }>({
-      query: ({ projectId }) => `tasks?projectId=${projectId}`,
+      query: ({ projectId }) => `task?projectId=${projectId}`,
       providesTags: (result) =>
         result
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
@@ -140,7 +140,7 @@ export const api = createApi({
       invalidatesTags: ["Tasks"],
     }),
     getTasksByUser: builder.query<Task[], number>({
-      query: (userId) => `tasks/user/${userId}`,
+      query: (userId) => `task/user/${userId}`,
       providesTags: (result, error, userId) =>
         result
           ? result.map(({ id }) => ({ type: "Tasks", id }))
@@ -151,7 +151,7 @@ export const api = createApi({
       { taskId: number; status: string }
     >({
       query: ({ taskId, status }) => ({
-        url: `tasks/${taskId}/status`,
+        url: `task/${taskId}/status`,
         method: "PATCH",
         body: { status },
       }),
@@ -160,11 +160,11 @@ export const api = createApi({
       ],
     }),
     getUsers: builder.query<User[], void>({
-      query: () => "users",
+      query: () => "user",
       providesTags: ["Users"],
     }),
     getTeams: builder.query<Team[], void>({
-      query: () => "teams",
+      query: () => "team",
       providesTags: ["Teams"],
     }),
     search: builder.query<SearchResults, string>({
