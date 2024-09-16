@@ -38,7 +38,7 @@ async function main() {
   await deleteAllData(orderedFileNames);
 
   for (const fileName of orderedFileNames) {
-    const filePath = path.join(dataDirectory, fileName);
+    const filePath = `${dataDirectory}/${fileName}`;
     const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     const modelName = path.basename(fileName, path.extname(fileName));
     const model: any = prisma[modelName as keyof typeof prisma];
