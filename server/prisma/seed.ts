@@ -21,7 +21,7 @@ async function deleteAllData(orderedFileNames: string[]) {
 }
 
 async function main() {
-  const dataDirectory = path.join('/root/proj-man/server/prisma', 'seedData');
+  const dataDirectory = '/root/proj-man/server/prisma/seedData';
   console.log('dataDirectory', dataDirectory);
 
   const orderedFileNames = [
