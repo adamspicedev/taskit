@@ -10,6 +10,17 @@ export class ProjectService {
     return this.prisma.project.findMany();
   }
 
+  async search(query: string): Promise<ProjectModel[]> {
+    return await this.prisma.project.findMany({
+      where: {
+        OR: [
+          { name: { contains: query as string } },
+          { description: { contains: query as string } },
+        ],
+      },
+    });
+  }
+
   async getProjectById(
     projectId: Prisma.ProjectWhereUniqueInput,
   ): Promise<ProjectModel> {

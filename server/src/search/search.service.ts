@@ -25,29 +25,9 @@ export class SearchService {
   ) {}
 
   async search(query: string): Promise<SearchResults> {
-    const tasks = await this.prisma.task.findMany({
-      where: {
-        OR: [
-          { title: { contains: query as string } },
-          { description: { contains: query as string } },
-        ],
-      },
-    });
-
-    const projects = await this.prisma.project.findMany({
-      where: {
-        OR: [
-          { name: { contains: query as string } },
-          { description: { contains: query as string } },
-        ],
-      },
-    });
-
-    const users = await this.prisma.user.findMany({
-      where: {
-        OR: [{ username: { contains: query as string } }],
-      },
-    });
+    const tasks = await this.taskService.search(query);
+    const projects = await this.projectService.search(query);
+    const users = await this.userService.search(query);
 
     return { tasks, projects, users };
   }

@@ -14,6 +14,17 @@ export class TaskService {
     return await this.prisma.task.findMany();
   }
 
+  async search(query: string): Promise<TaskModel[]> {
+    return await this.prisma.task.findMany({
+      where: {
+        OR: [
+          { title: { contains: query as string } },
+          { description: { contains: query as string } },
+        ],
+      },
+    });
+  }
+
   async findUserTasks(
     userId: Prisma.UserWhereUniqueInput,
   ): Promise<TaskModel[]> {
