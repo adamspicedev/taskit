@@ -5,6 +5,7 @@ import { Menu, Search } from "lucide-react";
 import Logo from "../Logo";
 import SettingButton from "../SettingsButton";
 import ThemeToggle from "../ThemeToggle";
+import SignOutButton from "../SignOutButton";
 
 const NavBar = () => {
   const dispatch = useAppDispatch();
@@ -47,6 +48,7 @@ const NavBar = () => {
         <ThemeToggle />
         <SettingButton />
         <div className="ml-2 mr-5 hidden min-h-8 w-[0.1rem] bg-gray-200 md:inline-block"></div>
+        <SignOutButton />
       </div>
     </div>
   );

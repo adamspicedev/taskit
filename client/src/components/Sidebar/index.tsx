@@ -20,6 +20,7 @@ import ThemeToggle from "../ThemeToggle";
 import PriorityLinks from "./PriorityLinks";
 import ProjectLinks from "./ProjectLinks";
 import SidebarLink from "./SidebarLink";
+import SignOutButton from "../SignOutButton";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ const Sidebar = () => {
         <div className="flex w-full items-center justify-center gap-2 p-4 sm:hidden">
           <ThemeToggle />
           <SettingButton />
+          <SignOutButton />
         </div>
 
         {/* TEAM */}

@@ -88,12 +88,21 @@ export interface Team {
 }
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    prepareHeaders: async (headers) => {
+      const session = await fetchAuthSession();
+      const accessToken = session.tokens ?? {};
+      if (accessToken) {
+        headers.set("Authorization", `Bearer ${accessToken}`);
+      }
+    },
+  }),
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (builder) => ({
     getAuthUser: builder.query({
-      queryFn: async (_, _queryApi, _extraoptions, fetchWithBQ) => {
+      queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
         try {
           const user = await getCurrentUser();
           const session = await fetchAuthSession();
