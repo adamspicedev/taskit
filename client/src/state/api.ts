@@ -110,7 +110,7 @@ export const api = createApi({
       },
     }),
     getProjects: builder.query<Project[], void>({
-      query: () => "projects",
+      query: () => "project",
       providesTags: ["Projects"],
     }),
     getProjectById: builder.query<Project, number>({
@@ -118,7 +118,7 @@ export const api = createApi({
     }),
     createProject: builder.mutation<Project, Partial<Project>>({
       query: (project) => ({
-        url: "projects",
+        url: "project",
         method: "POST",
         project,
       }),
@@ -133,7 +133,7 @@ export const api = createApi({
     }),
     createTask: builder.mutation<Task, Partial<Task>>({
       query: (task) => ({
-        url: "tasks",
+        url: "task",
         method: "POST",
         task,
       }),

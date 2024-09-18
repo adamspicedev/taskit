@@ -33,11 +33,8 @@ export class TaskController {
     return this.taskService.findUserTasks(userId);
   }
 
-  @Patch(':taskId/status')
-  update(
-    @Param('id') id: Prisma.TaskWhereUniqueInput,
-    @Body() data: Prisma.TaskUpdateInput,
-  ) {
-    return this.taskService.updateStatus(id, data);
+  @Patch('/:taskId/status')
+  update(@Param('taskId') id: string, @Body() data: Prisma.TaskUpdateInput) {
+    return this.taskService.updateStatus(+id, data);
   }
 }

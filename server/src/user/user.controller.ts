@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Prisma } from '@prisma/client';
 
@@ -12,7 +12,7 @@ export class UserController {
   }
 
   @Get('/:cognitoId')
-  async getUser(cognitoId: Prisma.UserWhereUniqueInput) {
+  async getUser(@Param('cognitoId') cognitoId: string) {
     return this.userService.getUser(cognitoId);
   }
 

@@ -31,10 +31,10 @@ export class TaskService {
     });
   }
 
-  async updateStatus(
-    id: Prisma.TaskWhereUniqueInput,
-    data: Prisma.TaskUpdateInput,
-  ) {
-    return await this.prisma.task.update({ where: id, data });
+  async updateStatus(id: number, data: Prisma.TaskUpdateInput) {
+    return await this.prisma.task.update({
+      where: { id }, // Simplified version
+      data,
+    });
   }
 }

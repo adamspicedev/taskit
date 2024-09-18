@@ -10,8 +10,8 @@ export class UserService {
     return await this.prisma.user.findMany();
   }
 
-  async getUser(cognitoId: Prisma.UserWhereUniqueInput): Promise<UserModel> {
-    return await this.prisma.user.findUnique({ where: cognitoId });
+  async getUser(cognitoId: string): Promise<UserModel> {
+    return await this.prisma.user.findUnique({ where: { cognitoId } });
   }
 
   async createUser(data: Prisma.UserCreateInput): Promise<UserModel> {

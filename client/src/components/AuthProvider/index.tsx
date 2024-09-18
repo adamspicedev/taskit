@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
 import "@aws-amplify/ui-react/styles.css";
@@ -42,7 +42,7 @@ const formFields = {
   },
 };
 
-const AuthProvider = ({ children }: any) => {
+const AuthProvider = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       <Authenticator formFields={formFields}>

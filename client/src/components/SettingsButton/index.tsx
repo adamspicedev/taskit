@@ -1,5 +1,8 @@
+"use client";
+
 import { useAppSelector } from "@/app/redux";
-import { Link, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const SettingButton = () => {
